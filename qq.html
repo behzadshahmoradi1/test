@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+  <meta charset="UTF-8">
+  <title>تست نوتیف</title>
+</head>
+<body>
+  <button onclick="sendNotif()">ارسال نوتیف</button>
+
+  <script>
+    if (Notification.permission === "default") {
+      Notification.requestPermission().then(result => {
+        console.log("مجوز:", result);
+      });
+    }
+
+    function sendNotif() {
+      if (Notification.permission === "granted") {
+        new Notification("تست نوتیف", {
+          body: "حتی وقتی تب فعاله!",
+          icon: "https://cdn-icons-png.flaticon.com/512/1384/1384005.png"
+        });
+      } else {
+        alert("مجوز نوتیف داده نشده.");
+      }
+    }
+  </script>
+</body>
+</html>
